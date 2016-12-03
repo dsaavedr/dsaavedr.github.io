@@ -1,0 +1,30 @@
+/*OVERALL STYLES*/
+* {
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family:;
+	line-height:;
+	color:;
+	font-size:;
+}
+
+#header-nav {
+	background-color: red;
+	border-radius: 0;
+	border: 0;
+	position: relative;
+}
+
+
+#nav-list {
+	background-color: red;
+	padding: 0;
+	/*margin: 0;*/
+}
