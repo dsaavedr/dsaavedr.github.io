@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+::selection {
+  background: rgba(255,255,98,1);
+}
+
 body {
   font-family: 'Maitree';
   color: rgba(0,0,0,.7);
@@ -28,13 +32,26 @@ body {
 }
 
 h1, h2 {
+  text-decoration: none;
   text-align: center;
   color: white;
   opacity: .8;
 }
 
 h1 {
-  font-size: 70px;
+  font-size: 75px;
+  color: white;
+  /*opacity: 1;*/
+}
+
+#pt-link:link, #pt-link:visited {
+  text-decoration: none;
+}
+
+#pt-link h1:hover {
+  color: white;
+  opacity: 1;
+  text-decoration: none;
 }
 
 h2 {
