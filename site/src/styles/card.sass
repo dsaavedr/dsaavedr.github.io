@@ -1,0 +1,37 @@
+.card-container
+    display: inline-block
+    max-width: $cardWidth
+    overflow: hidden
+    padding: 0 0 1rem
+    border-radius: 5px
+    transition: $mainTransition
+
+    .card-header
+        padding: 1rem 1rem 0
+        position: absolute
+        opacity: 0
+        transition: $mainTransition
+        color: $primaryColor
+
+        h4
+            margin-bottom: 0.2rem
+
+    @media screen and ( max-width: 798px )
+        .card-header
+            opacity: 1
+            z-index: 1
+        img
+            filter: brightness(40%)
+
+    &:hover
+        box-shadow: 0 2px 5px rgba($mainBlack, 0.6)
+
+        .card-header
+            opacity: 1
+            z-index: 1
+        img
+            filter: brightness(40%)
+
+    p
+        margin: 0 1rem
+        font-size: 0.8rem
