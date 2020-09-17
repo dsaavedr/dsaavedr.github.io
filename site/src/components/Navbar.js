@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../images/logo-plain.svg';
 
-import { FaAlignRight } from 'react-icons/fa';
+import { FaAlignRight, FaArrowCircleUp } from 'react-icons/fa';
 
 export default class Navbar extends Component {
     state = {
@@ -48,6 +48,7 @@ export default class Navbar extends Component {
                         <li><Link to="/">My uses</Link> </li>
                     </ul>
                 </div>
+                <a href="#" className="back-to-top"><FaArrowCircleUp /></a>
             </nav>
         )
     }

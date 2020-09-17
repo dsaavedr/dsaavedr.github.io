@@ -1,7 +1,23 @@
 footer
-    height: 300px
+    min-height: 250px
     background: $mainBlack
     color: $mainWhite
     display: flex
+    flex-flow: column
     align-items: center
     justify-content: center
+    padding: 1rem 0
+
+    div
+        margin: 1rem 0
+
+    .icons
+        font-size: 2rem
+        a
+            color: $mainWhite
+            margin: 0 10px
+            transition: $mainTransition
+
+            &:hover
+                color: $primaryColor
+                filter: drop-shadow(0 0 2px rgba($mainBlack, 0.8))

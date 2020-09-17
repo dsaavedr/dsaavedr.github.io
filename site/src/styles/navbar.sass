@@ -8,12 +8,28 @@
     transition: $quickTransition
     z-index: 1
 
+    .back-to-top
+        position: fixed
+        right: 2rem
+        bottom: 2rem
+        visibility: visible
+        font-size: 4rem
+
     &.top
         background: rgba($mainBlack, 0)
         transition: $quickTransition
 
+        .back-to-top
+            visibility: hidden
+
         .nav-header img
             filter: drop-shadow(2px 5px 2px rgba($mainBlack, 0.8))
+
+    @media screen and ( max-width: 768px )
+        .back-to-top
+            font-size: 3rem
+            right: 1 rem
+            bottom: 1 rem
 
 .nav-header
     display: flex
