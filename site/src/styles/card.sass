@@ -3,8 +3,13 @@
     max-width: $cardWidth
     overflow: hidden
     padding: 0 0 1rem
-    border-radius: 5px
+    // border-radius: 5px
+    box-shadow: $lightShadow
     transition: $mainTransition
+    background: $mainGrey
+
+    iframe
+        z-index: 1
 
     .card-header
         padding: 1rem 1rem 0
@@ -24,14 +29,19 @@
             filter: brightness(40%)
 
     &:hover
-        box-shadow: 0 2px 5px rgba($mainBlack, 0.6)
+        box-shadow: $darkShadow
 
         .card-header
             opacity: 1
             z-index: 1
-        img
+        img, iframe
             filter: brightness(40%)
 
     p
         margin: 0 1rem
         font-size: 0.8rem
+
+    .card-quote
+        color: $primaryColor
+        text-shadow: 0 0 2px $mainGrey
+        margin-left: 10px

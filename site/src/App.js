@@ -3,6 +3,7 @@ import React from 'react';
 import './App.sass';
 
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import Error from './pages/Error';
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route component={Error} />
       </Switch>
+      <Footer />
     </div>
   );
 }

@@ -4,7 +4,7 @@
     left: 0
     width: 100%
     padding: 0.75rem 2rem
-    background: rgba($mainBlack, 0.6)
+    background: rgba($mainBlack, 0.8)
     transition: $quickTransition
     z-index: 1
 
@@ -12,9 +12,18 @@
         background: rgba($mainBlack, 0)
         transition: $quickTransition
 
+        .nav-header img
+            filter: drop-shadow(2px 5px 2px rgba($mainBlack, 0.8))
+
 .nav-header
     display: flex
     justify-content: space-between
+
+    img
+        display: block
+        height: 50px
+        filter: none
+        transition: $mainTransition
 
 .nav-btn
     background: transparent
@@ -57,6 +66,7 @@
         max-width: 1170px
         margin: 0 auto
         display: flex
+        align-items: center
 
     .nav-links
         height: auto
@@ -64,5 +74,5 @@
         margin-left: 4rem
 
         a
-            margin: 0 1rem
+            margin: 0 2rem
             padding: 0.5rem 0
