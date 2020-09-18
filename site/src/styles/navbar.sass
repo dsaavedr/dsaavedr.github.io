@@ -58,18 +58,23 @@
     list-style-type: none
 
     a
-        display: block
+        display: flex
         text-decoration: none
         padding: 1rem 0
         color: $mainWhite
         transition: $mainTransition
         text-align: center
+        align-items: center
+        justify-content: center
         font-size: 1rem
         font-weight: 600
-        // letter-spacing: $mainSpacing
 
     a:hover
         color: $primaryColor
+
+    svg
+        font-size: 1.4rem
+        margin-right: 0.5rem
 
 .show-nav
     height: 160px

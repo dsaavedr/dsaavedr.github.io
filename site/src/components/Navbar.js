@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/logo-plain.svg';
 
 import { FaAlignRight, FaArrowCircleUp } from 'react-icons/fa';
+import { BiHome, BiUser, BiAbacus } from 'react-icons/bi';
 
 export default class Navbar extends Component {
     state = {
@@ -35,8 +36,6 @@ export default class Navbar extends Component {
         this.setState({ top: this.state.home });
 
         document.addEventListener('scroll', this.handleEventScroll, true);
-
-        console.log('mounted');
     }
 
     componentDidUpdate(pProps) {
@@ -68,9 +67,9 @@ export default class Navbar extends Component {
                         </button>
                     </div>
                     <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
-                        <li><Link to="/">Home</Link> </li>
-                        <li><Link to="/">About me</Link> </li>
-                        <li><Link to="/myUses/learning">My uses</Link> </li>
+                        <li><Link to="/"><BiHome /> Home</Link> </li>
+                        <li><Link to="/"><BiUser /> About me</Link> </li>
+                        <li><Link to="/myUses/learning"><BiAbacus /> My uses</Link> </li>
                     </ul>
                 </div>
                 <a href="#" className="back-to-top"><FaArrowCircleUp /></a>

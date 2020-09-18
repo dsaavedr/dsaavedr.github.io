@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Slide from './Slide';
 import Arrow from './Arrow';
 
-import Data from '../carousel-data';
+import Data from '../projects-data';
 
 export default class Carousel extends Component {
     constructor(props) {

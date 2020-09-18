@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import MainSection from '../components/MainSection';
 import Testimonials from '../components/Testimonials';
+import Creators from '../components/Creators';
 
 export default function Home() {
     return (
@@ -17,10 +18,10 @@ export default function Home() {
                     <p>In essence, programming is telling a computer what you want it to do in a language it can understand. As such, it doesn't have a set purpose in the same way most computers themselves don't have a set purpose. Coding can be used for data analysis, mathematical modeling, robotics, software and web development, creating beautiful art, simply making your computer say "hello!", and a myriad of other things constrained only by the coder's imagination. That is the beauty of programming and why this page is dedicated to the act itself and the different ways people employ it in their lives.</p>
                 </MainSection>
                 <MainSection title="How do people use it? - Practical applications">
-                    <Testimonials type="people" />
+                    <Testimonials />
                 </MainSection>
                 <MainSection title="How do people use it? - Creativity">
-                    <Testimonials type="creators" />
+                    <Creators />
                 </MainSection>
                 <MainSection title="How do people use it? - My recent projects">
 

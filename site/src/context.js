@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
 
-import data from './carousel-data';
+import showcaseData from './showcase-data';
+import projectsData from './projects-data';
 
 const ProjectContext = React.createContext();
 
 class ProjectProvider extends Component {
     state = {
+        showcase: [],
         projects: [],
         recentProjects: [],
         loading: true
     }
 
     getData = async () => {
-        try {
-            let response = data;
-            let projects = this.formatData([...response]);
-            let recentProjects = projects;
+        setTimeout(() => {
+            try {
+                let response = projectsData;
+                let projects = this.formatData([...response]);
+                response = showcaseData;
+                let showcase = this.formatData([...response]);
+                let recentProjects = projects;
 
-            this.setState({
-                loading: false,
-                projects: projects,
-                recentProjects: recentProjects
-            });
-        } catch (error) {
-            console.log(error);
-        }
+                this.setState({
+                    loading: false,
+                    showcase: showcase,
+                    projects: projects,
+                    recentProjects: recentProjects
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }, 2000); // Simulate delay
     }
 
     componentDidMount() {
