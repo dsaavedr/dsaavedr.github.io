@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <>
             <Hero>
-                <Banner title="Programming as a lifestyle" subtitle="An ode to programming">
+                <Banner title="Programming as a lifestyle" subtitle="An ode to programming by Daniel Saavedra">
                 </Banner>
             </Hero>
             <div className="sections-wrapper">
@@ -21,6 +21,9 @@ export default function Home() {
                 </MainSection>
                 <MainSection title="How do people use it? - Creativity">
                     <Testimonials type="creators" />
+                </MainSection>
+                <MainSection title="How do people use it? - My recent projects">
+
                 </MainSection>
             </div>
         </>

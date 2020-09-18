@@ -1,0 +1,58 @@
+.carousel
+    font-family: "Open Sans", sans-serif
+    position: relative
+    margin: 1rem auto 3rem
+    overflow: hidden
+    width: 80%
+    height: calc( 80vw * (9/16))
+
+    &:hover
+        .caption
+            opacity: 1
+            background: rgba($mainBlack, 0.8)
+
+            h4
+                color: $primaryColor
+                text-shadow: 0 0 2px $mainBlack
+
+            p
+                color: $mainWhite
+
+    .slide-img
+        background-size: cover
+        background-position: center
+        transition: $mainTransition
+        height: 100%
+        width: 100%
+    
+    .arrow
+        position: absolute
+        top: 50%
+
+        &.left
+            left: 1rem
+
+        &.right
+            right: 1rem
+
+    .btn-primary
+        border: none
+        background: transparent
+
+    .caption
+        text-align: center
+        position: absolute
+        bottom: 0
+        padding-bottom: 1rem
+        opacity: 0.6
+        transition: $mainTransition
+        width: 100%
+
+        h4
+            font-size: 1rem
+            margin: 0.5rem
+            transition: $mainTransition
+
+        p
+            font-size: 0.8rem
+            transition: $mainTransition
