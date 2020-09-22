@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 import Slide from './Slide';
 import Arrow from './Arrow';
+import Loading from './Loading';
 
-import Data from '../projects-data';
+// import Data from '../projects-data';
 
 export default class Carousel extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ export default class Carousel extends Component {
 
         this.state = {
             current: 0,
-            data: Data
+            data: props.data
         }
 
         this.prevSlide = this.prevSlide.bind(this);
@@ -38,6 +39,15 @@ export default class Carousel extends Component {
 
     render() {
         let item = this.state.data[this.state.current];
+        console.log(item);
+
+        let bullets = [];
+
+        for (var i = 0; i < this.state.data.length; i++) {
+            bullets.push(
+                <div className={this.state.current === i ? "bullet active" : "bullet"} key={i} ></div>
+            )
+        }
 
         return (
             <div className="carousel">
@@ -45,11 +55,14 @@ export default class Carousel extends Component {
                     direction="left"
                     handleClick={this.prevSlide} />
 
-                <Slide url={item.img} title={item.title} desc={item.desc} />
+                <Slide url={item.img} title={item.title} desc={item.description} redirect={item.url} />
 
                 <Arrow
                     direction="right"
                     handleClick={this.nextSlide} />
+                <div className="bullets">
+                    {bullets}
+                </div>
             </div>
         )
     }
