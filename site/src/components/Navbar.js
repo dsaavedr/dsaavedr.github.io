@@ -73,7 +73,7 @@ export default class Navbar extends Component {
                     <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
                         <li><Link to="/"><BiHome /> Home</Link> </li>
                         <li><Link to="/"><BiUser /> About me</Link> </li>
-                        <li><Link to="/myUses/learning"><BiAbacus /> My uses</Link> </li>
+                        <li><Link to="/my-uses/learning"><BiAbacus /> My uses</Link> </li>
                     </ul>
                 </div>
                 <a href="#" className="back-to-top"><FaArrowCircleUp /></a>
