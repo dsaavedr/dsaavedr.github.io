@@ -10,7 +10,9 @@ export default function Home() {
     return (
         <>
             <Hero>
-                <Banner title="Programming as a lifestyle" subtitle="An ode to programming by Daniel Saavedra">
+                <Banner title="Programming as a lifestyle" subtitle="An ode to programming">
+                    <p className="smaller">by</p>
+                    <p className="bold">Daniel Saavedra</p>
                 </Banner>
             </Hero>
             <div className="sections-wrapper">
