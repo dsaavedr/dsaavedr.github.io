@@ -1,0 +1,51 @@
+.portCards-wrapper
+    $minw: 300px
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(#{$minw}, 1fr))
+    gap: 2rem
+    align-items: start
+    justify-content: space-between
+    width: 100%
+    max-width: $containerWidth
+        
+    .portCard
+        // border: 1px solid black
+        // padding: 0.5rem 1rem
+        overflow: hidden
+        min-height: calc( #{$minw} *0.77)
+        position: relative
+
+        &:hover
+            img
+                transform: scale(1.3)
+
+            .content
+                opacity: 1
+                background: rgba($mainBlack, 0.6)
+
+        img
+            position: absolute
+            width: 120%
+            top: -30%
+            left: -10%
+            transition: $mainTransition
+            image-rendering: pixelated
+
+        .content
+            position: absolute
+            z-index: 1
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            padding: 0.5rem 1rem
+            opacity: 0
+            transition: $mainTransition
+            background: transparent
+            color: $mainWhite
+
+            h4
+                color: $primaryColor
+
+            p
+                font-size: 12px
