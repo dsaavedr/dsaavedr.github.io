@@ -13,6 +13,11 @@
 
 # development
 .vscode
+.env.development
+
+# local data
+
+src/images/projects
 
 # misc
 .DS_Store
