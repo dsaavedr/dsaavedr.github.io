@@ -1,15 +1,18 @@
 import React from 'react'
 
-export default function Slide({ url, title, desc }) {
+export default function Slide({ url, title, desc, redirect }) {
     const style = {
-        backgroundImage: `url(${url})`
+        backgroundImage: `url(${url})`,
+        mouse: "pointer"
     }
 
     return (
-        <div className="slide-img" style={style} >
+        <div className="slide-img" style={style}>
             <div className="caption">
-                <h4>{title}</h4>
-                <p>{desc}</p>
+                <a href={redirect} target="_blank" rel="noopener noreferrer">
+                    <h4>{title}</h4>
+                    <p>{desc}</p>
+                </a>
             </div>
         </div>
     )
