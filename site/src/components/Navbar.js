@@ -35,15 +35,19 @@ export default class Navbar extends Component {
     componentDidMount() {
         this.setState({ top: this.state.home });
 
-        document.addEventListener('scroll', this.handleEventScroll, true);
+        if (this.state.home) {
+            document.addEventListener('scroll', this.handleEventScroll, true);
+        }
     }
 
     componentDidUpdate(pProps) {
         if (this.props.location.pathname !== pProps.location.pathname) {
-
             let home = this.props.location.pathname === "/";
 
-            this.setState({ top: home });
+            this.setState({
+                home: home,
+                top: home
+            });
 
             if (home) {
                 document.addEventListener('scroll', this.handleEventScroll, true);
