@@ -71,7 +71,7 @@ export default class Navbar extends Component {
                         <li><Link to="/my-uses/learning"><BiAbacus /> My uses</Link> </li>
                     </ul>
                 </div>
-                <a href="/#" className={this.state.top ? "back-to-top top" : "back-to-top"}><FaArrowCircleUp /></a>
+                <a href={this.props.location.pathname + "#"} className={this.state.top ? "back-to-top top" : "back-to-top"}><FaArrowCircleUp /></a>
             </nav>
         )
     }
