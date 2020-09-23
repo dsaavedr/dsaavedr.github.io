@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import showcaseData from './showcase-data';
-import projectsData from './projects-data';
+// import projectsData from './projects-data';
 
 import Client from './Contentful';
 

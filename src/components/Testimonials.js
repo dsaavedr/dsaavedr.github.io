@@ -5,21 +5,23 @@ import { ProjectContext } from '../context';
 import Card from './Card';
 import Loading from './Loading';
 
-export default class Creators extends Component {
+export default class Testimonials extends Component {
     static contextType = ProjectContext;
 
     render() {
         let { loading, showcase } = this.context;
-        let arr = showcase.filter(item => item.type == "video");
+        let arr = showcase.filter(item => item.type === "testimonial");
 
         arr = arr.map((item, index) => {
-            if (item.video) {
+            if (item.img) {
                 return <Card
                     key={index}
                     title={item.title}
-                    video={item.video}
+                    subtitle={item.subtitle}
+                    img={item.img}
                     desc={item.desc} />
             }
+            return null;
         });
 
         return (
