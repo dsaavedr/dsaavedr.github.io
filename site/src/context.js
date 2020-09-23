@@ -83,8 +83,6 @@ class ProjectProvider extends Component {
             return project;
         });
 
-        console.log(tempItems);
-
         return tempItems;
     }
 

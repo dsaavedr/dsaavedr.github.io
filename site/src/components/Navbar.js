@@ -15,7 +15,7 @@ export default class Navbar extends Component {
     }
 
     handleToggle = () => {
-        this.setState({ isOpen: !this.state.isOpen })
+        this.setState({ isOpen: !this.state.isOpen });
     }
 
     handleEventScroll = () => {
@@ -33,11 +33,9 @@ export default class Navbar extends Component {
     }
 
     componentDidMount() {
-        this.setState({ top: this.state.home });
+        this.handleEventScroll();
 
-        if (this.state.home) {
-            document.addEventListener('scroll', this.handleEventScroll, true);
-        }
+        document.addEventListener('scroll', this.handleEventScroll, true);
     }
 
     componentDidUpdate(pProps) {
@@ -45,22 +43,19 @@ export default class Navbar extends Component {
             let home = this.props.location.pathname === "/";
 
             this.setState({
-                home: home,
-                top: home
+                home: home
             });
 
-            if (home) {
-                document.addEventListener('scroll', this.handleEventScroll, true);
-            } else {
-                document.removeEventListener('scroll', this.handleEventScroll, true);
-            }
+            // document.addEventListener('scroll', this.handleEventScroll, true);
         }
 
     }
 
     render() {
+        let both = this.state.top && this.state.home;
+
         return (
-            <nav className={this.state.top ? "navbar top" : "navbar"}>
+            <nav className={both ? "navbar top" : "navbar"}>
                 <div className="nav-center">
                     <div className="nav-header">
                         <Link to="/">
@@ -76,7 +71,7 @@ export default class Navbar extends Component {
                         <li><Link to="/my-uses/learning"><BiAbacus /> My uses</Link> </li>
                     </ul>
                 </div>
-                <a href="#" className="back-to-top"><FaArrowCircleUp /></a>
+                <a href="#" className={this.state.top ? "back-to-top top" : "back-to-top"}><FaArrowCircleUp /></a>
             </nav>
         )
     }

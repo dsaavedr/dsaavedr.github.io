@@ -6,18 +6,26 @@
     padding: 0.75rem 2rem
     background: rgba($mainBlack, 0.8)
     transition: $quickTransition
-    z-index: 1
+    z-index: 5
 
     .back-to-top
         position: fixed
         right: 2rem
-        bottom: 2rem
+        bottom: 1rem
         visibility: visible
         font-size: 4rem
+        opacity: 0.7
+        transition: $quickTransition
+
+        &.top
+            visibility: hidden
+
+        &:hover
+            opacity: 1
 
     &.top
-        background: rgba($mainBlack, 0)
         transition: $quickTransition
+        background: rgba($mainBlack, 0)
 
         .back-to-top
             visibility: hidden

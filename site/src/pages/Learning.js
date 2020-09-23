@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { ProjectContext } from '../context';
 
 import MainSection from '../components/MainSection';
-import Carousel from '../components/Carousel';
+// import Carousel from '../components/Carousel';
 import Loading from '../components/Loading';
 import PortCards from '../components/PortCards';
 
@@ -12,7 +12,6 @@ export default class Learning extends Component {
 
     render() {
         let { loading, projects } = this.context;
-        console.log(projects);
 
         return (
             <div className="learning">
@@ -23,7 +22,7 @@ export default class Learning extends Component {
                             As a part of my web development learning process, I started following several small tutorials and challenges and ultimately found <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer">freeCodeCamp.org</a>, a full-stack web development course for which I created a few small projects. Here are some of those and a letter-counting app I made out of curiosity of the frequency distribution of letters in english versus spanish.
                         </p>
                     </MainSection>
-                    <MainSection title="Projects">
+                    <MainSection>
                         {loading ? <Loading /> : <PortCards data={projects} />}
                     </MainSection>
                 </div>
