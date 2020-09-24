@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import MainSection from '../components/MainSection';
 import Testimonials from '../components/Testimonials';
+import Carousel from '../components/Carousel';
 import Creators from '../components/Creators';
+import Loading from '../components/Loading';
+
+import { ProjectContext } from '../context';
 
 export default function Home() {
+    const { recentProjects, loading } = useContext(ProjectContext);
+
     return (
         <>
             <Hero>
@@ -26,7 +32,7 @@ export default function Home() {
                     <Creators />
                 </MainSection>
                 <MainSection title="How do people use it? - My recent projects">
-
+                    {loading ? <Loading /> : <Carousel data={recentProjects} />}
                 </MainSection>
             </div>
         </>
