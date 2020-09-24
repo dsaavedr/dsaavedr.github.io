@@ -3,6 +3,10 @@
     padding: 0
     box-sizing: border-box
 
+    &::selection
+        background: rgba($mainRed, 0.9)
+        color: $mainWhite
+
 body
     // padding-top: 66px
     color: $mainBlack
@@ -43,20 +47,22 @@ h1, h2, h3, h4, h5, h6
     font-family: "Raleway", sans-serif
 
 .btn-primary
+    font-family: "Poppins", "Open Sans", sans-serif
     display: inline-block
     text-decoration: none
-    letter-spacing: $mainSpacing
-    color: $mainBlack
-    background: $primaryColor
-    padding: 0.4rem 0.9rem
-    border: 3px solid $primaryColor
+    padding: 0.5rem 0.9rem
     transition: $mainTransition
-    text-transform: uppercase
+    background: transparent
     cursor: pointer
+    border: 3px solid $primaryColor
+    color: $primaryColor
 
 .btn-primary:hover
-    background: transparent
-    color: $primaryColor
+    color: $mainBlack
+    background: $primaryColor
+
+    a
+        color: $mainBlack
 
 a
     color: $primaryColor

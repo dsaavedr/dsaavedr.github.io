@@ -45,8 +45,6 @@ export default class Navbar extends Component {
             this.setState({
                 home: home
             });
-
-            // document.addEventListener('scroll', this.handleEventScroll, true);
         }
 
     }
@@ -55,7 +53,8 @@ export default class Navbar extends Component {
         let both = this.state.top && this.state.home;
 
         return (
-            <nav className={both ? "navbar top" : "navbar"}>
+            // <nav className={both ? "navbar top" : "navbar"}>
+            <nav className={both && !this.state.isOpen ? "navbar top" : "navbar"}>
                 <div className="nav-center">
                     <div className="nav-header">
                         <Link to="/">
@@ -66,9 +65,9 @@ export default class Navbar extends Component {
                         </button>
                     </div>
                     <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
-                        <li><Link to="/"><BiHome /> Home</Link> </li>
-                        <li><Link to="/"><BiUser /> About me</Link> </li>
-                        <li><Link to="/my-uses/learning"><BiAbacus /> My uses</Link> </li>
+                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/"><BiHome /> Home</Link> </li>
+                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/"><BiUser /> About me</Link> </li>
+                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/my-uses/art/"><BiAbacus /> My uses</Link> </li>
                     </ul>
                 </div>
                 <a href={this.props.location.pathname + "#"} className={this.state.top ? "back-to-top top" : "back-to-top"}><FaArrowCircleUp /></a>
