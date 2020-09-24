@@ -1,12 +1,12 @@
 .carousel
-    $maxw: 900px
+    $maxw: $containerWidth
     $aspectRatio: 0.77
 
     font-family: "Open Sans", sans-serif
     position: relative
     margin: 2rem auto
     overflow: hidden
-    width: 80%
+    width: 100%
     height: calc( 80vw * #{$aspectRatio})
     box-shadow: inset 0 5px 10px black
     border-radius: 5px
@@ -45,6 +45,7 @@
 
         p
             font-size: 0.8rem
+            text-align: center
             transition: $mainTransition
 
     .slide-img
@@ -67,6 +68,9 @@
     .btn-primary
         border: none
         background: transparent
+
+        &:hover
+            color: $primaryColor
 
     .bullets
         display: flex

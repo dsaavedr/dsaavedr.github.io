@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Slide from './Slide';
 import Arrow from './Arrow';
-import Loading from './Loading';
 
 // import Data from '../projects-data';
 
