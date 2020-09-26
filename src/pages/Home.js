@@ -11,7 +11,7 @@ import Loading from '../components/Loading';
 import { ProjectContext } from '../context';
 
 export default function Home() {
-    const { recentProjects, loading } = useContext(ProjectContext);
+    const { featured, loading } = useContext(ProjectContext);
 
     return (
         <>
@@ -31,8 +31,8 @@ export default function Home() {
                 <MainSection title="How do people use it? - Creativity">
                     <Creators />
                 </MainSection>
-                <MainSection title="How do people use it? - My recent projects">
-                    {loading ? <Loading /> : <Carousel data={recentProjects} />}
+                <MainSection title="How do people use it? - My featured projects">
+                    {loading ? <Loading /> : <Carousel data={featured} />}
                 </MainSection>
             </div>
         </>
