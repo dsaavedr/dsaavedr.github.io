@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FaCodepen, FaGithub, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaCodepen, FaGithub, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { RiHeart3Line } from 'react-icons/ri';
 
 export default function Footer() {
@@ -16,6 +16,7 @@ export default function Footer() {
                 <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/dsaavedr"><FaCodepen /></a>
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/dsaavedr"><FaGithub /></a>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/danielsm14/"><FaInstagram /></a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/daniel-saavedra-988717121/"><FaLinkedin /></a>
                 <a target="_blank" rel="noopener noreferrer" href="mailto:danielsaavedram@hotmail.com"><FaEnvelope /></a>
             </div>
         </footer>
