@@ -6,13 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import { ProjectProvider } from './context';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ProjectProvider>
-      <Router>
-        <App />
-      </Router>
-    </ProjectProvider>
-  </React.StrictMode>,
+  <ProjectProvider>
+    <Router>
+      <App />
+    </Router>
+  </ProjectProvider>,
   document.getElementById('root')
 );
 

@@ -12,7 +12,9 @@ class ProjectProvider extends Component {
         showcase: [],
         projects: [],
         recentProjects: [],
+        filteredProjects: [],
         featured: [],
+        filter: "all",
         loading: true
     }
 
@@ -36,6 +38,7 @@ class ProjectProvider extends Component {
                 loading: false,
                 recentProjects: recent,
                 projects: projects,
+                filteredProjects: projects,
                 featured: featured,
                 showcase: showcase
             });
@@ -50,7 +53,7 @@ class ProjectProvider extends Component {
                 response = showcaseData;
                 let showcase = this.formatData([...response]);
                 let recentProjects = projects;
-
+    
                 this.setState({
                     loading: false,
                     showcase: showcase,
