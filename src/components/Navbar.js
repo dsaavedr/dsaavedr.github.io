@@ -67,7 +67,7 @@ export default class Navbar extends Component {
                     <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
                         <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/"><BiHome /> Home</Link> </li>
                         <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/"><BiUser /> About me</Link> </li>
-                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/my-uses/art/"><BiAbacus /> My uses</Link> </li>
+                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/my-uses/"><BiAbacus /> My uses</Link> </li>
                     </ul>
                 </div>
                 <a href={this.props.location.pathname + "#"} className={this.state.top ? "back-to-top top" : "back-to-top"}><FaArrowCircleUp /></a>
