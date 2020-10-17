@@ -62,9 +62,9 @@ export default class Uses extends Component {
         }
 
         return (
-            <div>
+            <div className="sections-wrapper">
                 <MainSection title="How I use programming" subtitle={pages[show].text}>
-                    <UsesSelection active={this.state.show} click={this.show} />
+                    <UsesSelection active={parseInt(this.state.show)} click={this.show} />
                     {page}
                 </MainSection>
                 <MainSection>
