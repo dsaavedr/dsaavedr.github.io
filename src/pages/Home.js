@@ -16,7 +16,7 @@ export default function Home() {
     return (
         <>
             <Hero>
-                <Banner title="Programming as a lifestyle" subtitle="An ode to programming">
+                <Banner title="Programming as a lifestyle" subtitle="An ode to programming / portfolio">
                     <p className="smaller">by</p>
                     <p className="bold">Daniel Saavedra</p>
                 </Banner>
