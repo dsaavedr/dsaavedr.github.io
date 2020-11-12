@@ -1,41 +1,41 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import logo from '../images/logo-plain.svg';
+import logo from "../images/logo-plain.svg";
 
-import { FaAlignRight, FaArrowCircleUp } from 'react-icons/fa';
-import { BiHome, BiUser, BiAbacus } from 'react-icons/bi';
+import { FaAlignRight, FaArrowCircleUp } from "react-icons/fa";
+import { BiHome, BiUser, BiAbacus } from "react-icons/bi";
 
 export default class Navbar extends Component {
     state = {
         isOpen: false,
         home: this.props.location.pathname === "/",
         top: true
-    }
+    };
 
     handleToggle = () => {
         this.setState({ isOpen: !this.state.isOpen });
-    }
+    };
 
     handleEventScroll = () => {
         const scrolled = document.scrollingElement.scrollTop;
 
         if (scrolled >= 120) {
             if (this.state.top) {
-                this.setState({ top: false })
+                this.setState({ top: false });
             }
         } else {
             if (!this.state.top) {
-                this.setState({ top: true })
+                this.setState({ top: true });
             }
         }
-    }
+    };
 
     componentDidMount() {
         this.handleEventScroll();
 
-        document.addEventListener('scroll', this.handleEventScroll, true);
+        document.addEventListener("scroll", this.handleEventScroll, true);
     }
 
     componentDidUpdate(pProps) {
@@ -46,7 +46,6 @@ export default class Navbar extends Component {
                 home: home
             });
         }
-
     }
 
     render() {
@@ -55,23 +54,31 @@ export default class Navbar extends Component {
         return (
             // <nav className={both ? "navbar top" : "navbar"}>
             <nav className={both && !this.state.isOpen ? "navbar top" : "navbar"}>
-                <div className="nav-center">
-                    <div className="nav-header">
-                        <Link to="/">
-                            <img src={logo} alt="Logo" />
+                <div className='nav-center'>
+                    <div className='nav-header'>
+                        <Link to='/'>
+                            <img src={logo} alt='Logo' />
                         </Link>
-                        <button className="nav-btn" type="button" onClick={this.handleToggle}>
-                            <FaAlignRight className="nav-icon" />
+                        <button className='nav-btn' type='button' onClick={this.handleToggle}>
+                            <FaAlignRight className='nav-icon' />
                         </button>
                     </div>
                     <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
+                        {/* prettier-ignore */}
                         <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/"><BiHome /> Home</Link> </li>
-                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/"><BiUser /> About me</Link> </li>
+                        {/* prettier-ignore */}
+                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/about"><BiUser /> About me</Link> </li>
+                        {/* prettier-ignore */}
                         <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/my-uses/"><BiAbacus /> My uses</Link> </li>
                     </ul>
                 </div>
-                <a href={this.props.location.pathname + "#"} className={this.state.top ? "back-to-top top" : "back-to-top"}><FaArrowCircleUp /></a>
+                <a
+                    href={this.props.location.pathname + "#"}
+                    className={this.state.top ? "back-to-top top" : "back-to-top"}
+                >
+                    <FaArrowCircleUp />
+                </a>
             </nav>
-        )
+        );
     }
 }

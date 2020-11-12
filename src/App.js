@@ -1,41 +1,43 @@
-import React from 'react';
+import React from "react";
 
-import './App.sass';
+import "./App.sass";
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import Home from './pages/Home';
-import Uses from './pages/Uses';
-import Learning from './pages/Learning';
-import Productivity from './pages/Productivity';
-import Art from './pages/Art';
-import Error from './pages/Error';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Uses from "./pages/Uses";
+// import Learning from "./pages/Learning";
+// import Productivity from "./pages/Productivity";
+// import Art from "./pages/Art";
+import Error from "./pages/Error";
 
-import { Route, Switch, useLocation, withRouter } from 'react-router-dom';
+import { Route, Switch, useLocation, withRouter } from "react-router-dom";
 
 function App() {
-  let location = useLocation();
+    let location = useLocation();
 
-  /* React.useEffect(() => {
+    /* React.useEffect(() => {
     // console.log('Location changed');
     // console.log(location);
   }, [location]); */
 
-  return (
-    <div className="App">
-      <Navbar location={location} />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/my-uses" component={Uses} />
-        <Route exact path="/my-uses/learning" component={Learning} />
-        <Route exact path="/my-uses/productivity" component={Productivity} />
-        <Route exact path="/my-uses/art" component={Art} />
-        <Route component={Error} />
-      </Switch>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className='App'>
+            <Navbar location={location} />
+            <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/about' component={About} />
+                <Route exact path='/my-uses' component={Uses} />
+                {/* <Route exact path="/my-uses/learning" component={Learning} /> */}
+                {/* <Route exact path="/my-uses/productivity" component={Productivity} /> */}
+                {/* <Route exact path="/my-uses/art" component={Art} /> */}
+                <Route component={Error} />
+            </Switch>
+            <Footer />
+        </div>
+    );
 }
 
 export default withRouter(App);
