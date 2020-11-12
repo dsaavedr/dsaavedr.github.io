@@ -49,9 +49,38 @@ export default class About extends Component {
                             {loading ? <Loading /> : <img src={url} alt={title} />}
                         </div>
                         <div className='body'>
-                            <h3>Full-Stack Web Developer</h3>
+                            <p>
+                                I've been incorporating programming into my life for years now. What
+                                began as a way of interacting more efficiently with my PC and
+                                dealing with course work from University, quickly became the thing
+                                that I enjoy doing most:{" "}
+                                <em>Full-Stack Development, Animation &amp; Data Analysis.</em>
+                            </p>
+                            <h3>My Skills</h3>
+                            <div id='skills'>
+                                <div className='block'>
+                                    <h4>Full-Stack Development</h4>
+                                    <ul>
+                                        <li>Express</li>
+                                        <li>NodeJS</li>
+                                        <li>MongoDB</li>
+                                        <li>HTML &amp; CSS</li>
+                                        <li>Javascript</li>
+                                        <li>React</li>
+                                        <li>Bootstrap</li>
+                                        <li>D3.js</li>
+                                    </ul>
+                                </div>
+                                <div className='block'>
+                                    <h4>Data Analysis</h4>
+                                    <ul>
+                                        <li>Stata</li>
+                                        <li>Python</li>
+                                        <li>R</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <p></p>
                     </div>
                 </MainSection>
             </div>
