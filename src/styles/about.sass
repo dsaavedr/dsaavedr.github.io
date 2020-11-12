@@ -1,10 +1,67 @@
 #about
-    margin-top: 3em
+    margin-top: 5em
     display: flex
     justify-content: space-between
+    // align-items: center
 
     .image
-        max-width: 50%
+        min-width: 40%
+        width: 40%
 
         img
             width: 100%
+            // border-radius: 5px
+
+    .body
+        padding-left: 2em
+        // max-height: calc( 864px * 0.4 )
+        overflow: hidden
+
+        h3
+            margin: 2em 0 1em
+
+    #skills
+        display: flex
+
+        .block
+            min-width: 50%
+
+        ul
+            margin: 0
+            list-style-position: inside
+            display: flex
+            flex-wrap: wrap
+
+            li
+                list-style-type: none
+                min-width: 50%
+
+                &::before
+                    content: '\1F331'
+
+                    // content: '\1F342'
+                    // content: '\1F4CD'
+                    // content: '\1F4CC'
+                    // content: '\1F525'
+                    margin-right: 10px
+
+    @media screen and ( max-width: $maxWidthMobile )
+        flex-direction: column
+        align-items: center
+        margin-top: 3em
+
+        .image
+            width: 80%
+            margin-bottom: 1em
+
+        .body
+            padding: 0
+
+            h3
+                margin: 1em 0
+
+        #skills
+            display: block
+
+            h4
+                margin: 20px 0
