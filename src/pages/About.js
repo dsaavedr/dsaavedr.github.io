@@ -23,7 +23,6 @@ export default class About extends Component {
     fetchImage = async () => {
         try {
             const response = await Client.getAsset("5hxm8LnHTL7j8mS3n2VOQ7");
-            console.log(response);
 
             const { title } = response.fields;
             const { url } = response.fields.file;
