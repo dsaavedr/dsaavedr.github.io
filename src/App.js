@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Uses from "./pages/Uses";
+import Contact from "./pages/Contact";
 // import Learning from "./pages/Learning";
 // import Productivity from "./pages/Productivity";
 // import Art from "./pages/Art";
@@ -30,6 +31,7 @@ function App() {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/my-uses' component={Uses} />
+                <Route exact path='/contact' component={Contact} />
                 {/* <Route exact path="/my-uses/learning" component={Learning} /> */}
                 {/* <Route exact path="/my-uses/productivity" component={Productivity} /> */}
                 {/* <Route exact path="/my-uses/art" component={Art} /> */}
