@@ -6,6 +6,7 @@ import logo from "../images/logo-plain.svg";
 
 import { FaAlignRight, FaArrowCircleUp } from "react-icons/fa";
 import { BiHome, BiUser, BiAbacus } from "react-icons/bi";
+import { RiContactsLine } from "react-icons/ri";
 
 export default class Navbar extends Component {
     state = {
@@ -70,6 +71,8 @@ export default class Navbar extends Component {
                         <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/about"><BiUser /> About me</Link> </li>
                         {/* prettier-ignore */}
                         <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/my-uses/"><BiAbacus /> My uses</Link> </li>
+                        {/* prettier-ignore */}
+                        <li><Link onClick={this.state.isOpen ? this.handleToggle : null} to="/contact"><RiContactsLine /> Contact me</Link> </li>
                     </ul>
                 </div>
                 <a
