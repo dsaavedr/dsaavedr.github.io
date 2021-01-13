@@ -17,6 +17,15 @@ export default class ContactForm extends Component {
         this.onMessageChange = this.onMessageChange.bind(this);
     }
 
+    resetForm() {
+        this.setState({
+            name: "",
+            email: "",
+            subject: "",
+            message: ""
+        });
+    }
+
     onEmailChange(e) {
         this.setState({
             email: e.target.value
@@ -43,7 +52,28 @@ export default class ContactForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state);
+
+        // fetch("http://localhost:5000/send", {
+        fetch("https://glacial-mesa-80370.herokuapp.com/send", {
+            method: "POST",
+            body: JSON.stringify(this.state),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.status === "success") {
+                    this.resetForm();
+                    alert("Message sent!");
+                } else if (res.status === "fail") {
+                    alert(
+                        "Message failed to send. Please contact me directly: danielsaavedram@hotmail.com"
+                    );
+                }
+            })
+            .catch(err => console.error(err));
     }
 
     render() {
@@ -60,6 +90,7 @@ export default class ContactForm extends Component {
                                     className='form-control'
                                     type='text'
                                     name='name'
+                                    value={this.state.name}
                                     onChange={this.onNameChange}
                                 />
                             </div>
@@ -71,6 +102,7 @@ export default class ContactForm extends Component {
                                     className='form-control'
                                     type='email'
                                     name='mail'
+                                    value={this.state.email}
                                     onChange={this.onEmailChange}
                                 />
                             </div>
@@ -82,6 +114,7 @@ export default class ContactForm extends Component {
                                     className='form-control'
                                     type='text'
                                     name='subject'
+                                    value={this.state.subject}
                                     onChange={this.onSubjectChange}
                                 />
                             </div>
@@ -90,7 +123,11 @@ export default class ContactForm extends Component {
                             <label htmlFor='message' className='form-label'>
                                 Message
                             </label>
-                            <textarea name='message' onChange={this.onMessageChange}></textarea>
+                            <textarea
+                                name='message'
+                                value={this.state.message}
+                                onChange={this.onMessageChange}
+                            ></textarea>
                         </div>
                     </div>
                     <button
