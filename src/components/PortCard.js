@@ -3,7 +3,7 @@ import ReactGA from "react-ga";
 
 import { FaLink } from "react-icons/fa";
 
-export default function PortCard({ data }) {
+const PortCard = React.forwardRef(({ data }, ref) => {
     function track() {
         ReactGA.event({
             category: "Project",
@@ -12,7 +12,7 @@ export default function PortCard({ data }) {
     }
 
     return (
-        <div className='portCard'>
+        <div className='portCard' ref={ref}>
             <img src={data.img} alt={data.title} />
             <div className='content'>
                 <h4>{data.title}</h4>
@@ -27,4 +27,6 @@ export default function PortCard({ data }) {
             </div>
         </div>
     );
-}
+});
+
+export default PortCard;
