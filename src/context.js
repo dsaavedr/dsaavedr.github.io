@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import showcaseData from './showcase-data';
+import showcaseData from "./showcase-data";
 // import projectsData from './projects-data';
 
-import Client from './Contentful';
+import Client from "./Contentful";
 
 const ProjectContext = React.createContext();
 
@@ -16,7 +16,7 @@ class ProjectProvider extends Component {
         featured: [],
         filter: "all",
         loading: true
-    }
+    };
 
     getData = async () => {
         try {
@@ -28,7 +28,10 @@ class ProjectProvider extends Component {
             let projects = this.formatData(response.items);
 
             let recent = [...projects];
-            recent = recent.sort((a, b) => a.date - b.date).reverse().slice(0, 3);
+            recent = recent
+                .sort((a, b) => a.date - b.date)
+                .reverse()
+                .slice(0, 3);
 
             let featured = projects.filter(item => item.showcase === true);
 
@@ -64,7 +67,7 @@ class ProjectProvider extends Component {
                 console.log(error);
             }
         }, 2000); // Simulate delay */
-    }
+    };
 
     componentDidMount() {
         this.getData();
@@ -86,17 +89,36 @@ class ProjectProvider extends Component {
             return project;
         });
 
-        return tempItems;
+        return this.shuffle(tempItems);
+    }
+
+    shuffle(arr) {
+        let currentIndex = arr.length,
+            tempval,
+            randomIndex;
+
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            tempval = arr[currentIndex];
+            arr[currentIndex] = arr[randomIndex];
+            arr[randomIndex] = tempval;
+        }
+
+        return arr;
     }
 
     render() {
         return (
-            <ProjectContext.Provider value={{
-                ...this.state
-            }}>
+            <ProjectContext.Provider
+                value={{
+                    ...this.state
+                }}
+            >
                 {this.props.children}
             </ProjectContext.Provider>
-        )
+        );
     }
 }
 
@@ -104,10 +126,10 @@ const ProjectConsumer = ProjectContext.Consumer;
 
 export function withProjectConsumer(Component) {
     return function ConsumerWrapper(props) {
-        return <ProjectConsumer>
-            {value => <Component {...props} context={value} />}
-        </ProjectConsumer>
-    }
+        return (
+            <ProjectConsumer>{value => <Component {...props} context={value} />}</ProjectConsumer>
+        );
+    };
 }
 
 export { ProjectProvider, ProjectConsumer, ProjectContext };
