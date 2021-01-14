@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ProjectProvider } from "./context";
+import ScrollToTop from "./components/ScrollToTop";
 
 const trackingId = "UA-84457705-2";
 const history = createBrowserHistory();
@@ -20,7 +21,9 @@ history.listen(location => {
 ReactDOM.render(
     <ProjectProvider>
         <Router history={history}>
-            <App />
+            <ScrollToTop>
+                <App />
+            </ScrollToTop>
         </Router>
     </ProjectProvider>,
     document.getElementById("root")
