@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import Title from './Title';
+import Title from "./Title";
 
-export default function MainSection({ title, subtitle, children }) {
+const MainSection = React.forwardRef((props, ref) => {
+    const { title, subtitle, children } = props;
     return (
-        <section className="main-section">
+        <section className='main-section' ref={ref}>
             <Title title={title} subtitle={subtitle} />
             {children}
         </section>
-    )
-}
+    );
+});
+
+export default MainSection;

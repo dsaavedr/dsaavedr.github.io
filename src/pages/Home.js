@@ -1,4 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Hero from "../components/Hero";
 import Banner from "../components/Banner";
@@ -13,6 +16,40 @@ import { ProjectContext } from "../context";
 export default function Home() {
     const { featured, loading } = useContext(ProjectContext);
 
+    gsap.registerPlugin(ScrollTrigger);
+
+    const revealRefs = useRef([]);
+    revealRefs.current = [];
+
+    const addToRefs = el => {
+        if (el && !revealRefs.current.includes(el)) {
+            revealRefs.current.push(el);
+        }
+    };
+
+    useEffect(() => {
+        revealRefs.current.forEach((i, idx) => {
+            gsap.fromTo(
+                i,
+                {
+                    autoAlpha: 0,
+                    y: -50
+                },
+                {
+                    duration: 1,
+                    autoAlpha: 1,
+                    ease: "out",
+                    scrollTrigger: {
+                        id: `section-${idx + 1}`,
+                        trigger: i,
+                        start: "top center+=300",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    }, []);
+
     return (
         <>
             <Hero>
@@ -25,7 +62,7 @@ export default function Home() {
                 </Banner>
             </Hero>
             <div className='sections-wrapper'>
-                <MainSection title="What's the point of programming?">
+                <MainSection title="What's the point of programming?" ref={addToRefs}>
                     <p>
                         In essence, programming is telling a computer what you want it to do in a
                         language it can understand. As such, it doesn't have a set purpose in the
@@ -38,13 +75,13 @@ export default function Home() {
                         lives.
                     </p>
                 </MainSection>
-                <MainSection title='How do people use it? - Practical applications'>
+                <MainSection title='How do people use it? - Practical applications' ref={addToRefs}>
                     <Testimonials />
                 </MainSection>
-                <MainSection title='How do people use it? - Creativity'>
+                <MainSection title='How do people use it? - Creativity' ref={addToRefs}>
                     <Creators />
                 </MainSection>
-                <MainSection title='How do people use it? - My featured projects'>
+                <MainSection title='How do people use it? - My featured projects' ref={addToRefs}>
                     {loading ? <Loading /> : <Carousel data={featured} />}
                 </MainSection>
             </div>
