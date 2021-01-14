@@ -1,6 +1,6 @@
 import React from "react";
-import ContactForm from "../components/ContactForm";
 
+import ContactForm from "../components/ContactForm";
 import MainSection from "../components/MainSection";
 
 export default function Contact() {
