@@ -134,6 +134,7 @@ export default class ContactForm extends Component {
                                     name='name'
                                     value={this.state.name}
                                     onChange={this.onNameChange}
+                                    required
                                 />
                             </div>
                             <div className='row'>
@@ -146,6 +147,7 @@ export default class ContactForm extends Component {
                                     name='mail'
                                     value={this.state.email}
                                     onChange={this.onEmailChange}
+                                    required
                                 />
                             </div>
                             <div className='row'>
@@ -169,6 +171,7 @@ export default class ContactForm extends Component {
                                 name='message'
                                 value={this.state.message}
                                 onChange={this.onMessageChange}
+                                required
                             ></textarea>
                         </div>
                     </div>
