@@ -72,20 +72,24 @@ export default class ContactForm extends Component {
                 if (res.status === "success") {
                     this.resetForm();
                     // alert("Message sent!");
-                    this.setState({
-                        success: true,
-                        visible: true
-                    });
-                    this.showAlert();
+                    this.setState(
+                        {
+                            success: true,
+                            visible: true
+                        },
+                        this.showAlert
+                    );
                 } else if (res.status === "fail") {
                     // alert(
                     //     "Message failed to send. Please contact me directly: danielsaavedram@hotmail.com"
                     // );
-                    this.setState({
-                        success: false,
-                        visible: true
-                    });
-                    this.showAlert();
+                    this.setState(
+                        {
+                            success: false,
+                            visible: true
+                        },
+                        this.showAlert
+                    );
                 }
             })
             .catch(err => {
