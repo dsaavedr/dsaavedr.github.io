@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { Alert } from "reactstrap";
 
+import Loading from "./Loading";
+
 export default class ContactForm extends Component {
     constructor(props) {
         super();
@@ -12,7 +14,8 @@ export default class ContactForm extends Component {
             subject: "",
             message: "",
             success: true,
-            visible: false
+            visible: false,
+            loading: false
         };
 
         this.onEmailChange = this.onEmailChange.bind(this);
@@ -58,6 +61,10 @@ export default class ContactForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        this.setState({
+            loading: true
+        });
+
         // fetch("http://localhost:5000/send", {
         fetch("https://glacial-mesa-80370.herokuapp.com/send", {
             method: "POST",
@@ -71,7 +78,6 @@ export default class ContactForm extends Component {
             .then(res => {
                 if (res.status === "success") {
                     this.resetForm();
-                    // alert("Message sent!");
                     this.setState(
                         {
                             success: true,
@@ -80,9 +86,6 @@ export default class ContactForm extends Component {
                         this.showAlert
                     );
                 } else if (res.status === "fail") {
-                    // alert(
-                    //     "Message failed to send. Please contact me directly: danielsaavedram@hotmail.com"
-                    // );
                     this.setState(
                         {
                             success: false,
@@ -91,12 +94,16 @@ export default class ContactForm extends Component {
                         this.showAlert
                     );
                 }
+                this.setState({
+                    loading: false
+                });
             })
             .catch(err => {
                 console.error(err);
                 this.setState({
                     success: false,
-                    visible: true
+                    visible: true,
+                    loading: false
                 });
             });
     }
@@ -108,6 +115,74 @@ export default class ContactForm extends Component {
     }
 
     render() {
+        const form = (
+            <form onSubmit={this.handleSubmit.bind(this)} method='POST'>
+                <div className='body'>
+                    <div id='header'>
+                        <div className='row'>
+                            <label className='form-label' htmlFor='name'>
+                                Full name
+                            </label>
+                            <input
+                                className='form-control'
+                                type='text'
+                                name='name'
+                                value={this.state.name}
+                                onChange={this.onNameChange}
+                                required
+                            />
+                        </div>
+                        <div className='row'>
+                            <label className='form-label' htmlFor='mail'>
+                                Your e-mail
+                            </label>
+                            <input
+                                className='form-control'
+                                type='email'
+                                name='mail'
+                                value={this.state.email}
+                                onChange={this.onEmailChange}
+                                required
+                            />
+                        </div>
+                        <div className='row'>
+                            <label htmlFor='subject' className='form-label'>
+                                Subject
+                            </label>
+                            <input
+                                className='form-control'
+                                type='text'
+                                name='subject'
+                                value={this.state.subject}
+                                onChange={this.onSubjectChange}
+                            />
+                        </div>
+                    </div>
+                    <div id='message'>
+                        <label htmlFor='message' className='form-label'>
+                            Message
+                        </label>
+                        <textarea
+                            name='message'
+                            value={this.state.message}
+                            onChange={this.onMessageChange}
+                            required
+                        ></textarea>
+                    </div>
+                </div>
+                <button
+                    className='btn-primary'
+                    name='submit'
+                    style={{ color: "black" }}
+                    type='submit'
+                >
+                    Send
+                </button>
+            </form>
+        );
+
+        const { loading } = this.state;
+
         return (
             <div id='contact-form'>
                 <div id='alertwrapper'>
@@ -121,69 +196,7 @@ export default class ContactForm extends Component {
                             : "Message failed to send. Please contact me directly: danielsaavedram@hotmail.com"}
                     </Alert>
                 </div>
-                <form onSubmit={this.handleSubmit.bind(this)} method='POST'>
-                    <div className='body'>
-                        <div id='header'>
-                            <div className='row'>
-                                <label className='form-label' htmlFor='name'>
-                                    Full name
-                                </label>
-                                <input
-                                    className='form-control'
-                                    type='text'
-                                    name='name'
-                                    value={this.state.name}
-                                    onChange={this.onNameChange}
-                                    required
-                                />
-                            </div>
-                            <div className='row'>
-                                <label className='form-label' htmlFor='mail'>
-                                    Your e-mail
-                                </label>
-                                <input
-                                    className='form-control'
-                                    type='email'
-                                    name='mail'
-                                    value={this.state.email}
-                                    onChange={this.onEmailChange}
-                                    required
-                                />
-                            </div>
-                            <div className='row'>
-                                <label htmlFor='subject' className='form-label'>
-                                    Subject
-                                </label>
-                                <input
-                                    className='form-control'
-                                    type='text'
-                                    name='subject'
-                                    value={this.state.subject}
-                                    onChange={this.onSubjectChange}
-                                />
-                            </div>
-                        </div>
-                        <div id='message'>
-                            <label htmlFor='message' className='form-label'>
-                                Message
-                            </label>
-                            <textarea
-                                name='message'
-                                value={this.state.message}
-                                onChange={this.onMessageChange}
-                                required
-                            ></textarea>
-                        </div>
-                    </div>
-                    <button
-                        className='btn-primary'
-                        name='submit'
-                        style={{ color: "black" }}
-                        type='submit'
-                    >
-                        Send
-                    </button>
-                </form>
+                {loading ? <Loading msg='Sending' /> : form}
             </div>
         );
     }
