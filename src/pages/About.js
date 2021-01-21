@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { gsap } from "gsap";
+
 import MainSection from "../components/MainSection";
 import Loading from "../components/Loading";
 
@@ -8,6 +10,9 @@ import Client from "../Contentful";
 export default class About extends Component {
     constructor(props) {
         super();
+
+        this.element = null;
+        this.tween = null;
 
         this.state = {
             url: "",
@@ -18,6 +23,12 @@ export default class About extends Component {
 
     componentDidMount() {
         this.fetchImage();
+        this.tween = gsap.from(this.element, {
+            autoAlpha: 0,
+            ease: "out",
+            duration: 1,
+            y: 100
+        });
     }
 
     fetchImage = async () => {
@@ -43,7 +54,7 @@ export default class About extends Component {
         return (
             <div className='sections-wrapper'>
                 <MainSection title="Hi! I'm Daniel">
-                    <div id='about'>
+                    <div id='about' ref={div => (this.element = div)}>
                         <div className='image'>
                             {loading ? <Loading /> : <img src={url} alt={title} />}
                         </div>
@@ -63,11 +74,12 @@ export default class About extends Component {
                                         <li>Express</li>
                                         <li>NodeJS</li>
                                         <li>MongoDB</li>
+                                        <li>MySQL</li>
                                         <li>HTML &amp; CSS</li>
                                         <li>Javascript</li>
                                         <li>React</li>
+                                        <li>Vue.js</li>
                                         <li>Bootstrap</li>
-                                        <li>D3.js</li>
                                     </ul>
                                 </div>
                                 <div className='block'>
@@ -76,6 +88,8 @@ export default class About extends Component {
                                         <li>Stata</li>
                                         <li>Python</li>
                                         <li>R</li>
+                                        <li>D3.js</li>
+                                        <li>Power BI</li>
                                     </ul>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Alert } from "reactstrap";
+import { gsap } from "gsap";
 
 import Loading from "./Loading";
 
@@ -18,11 +19,21 @@ export default class ContactForm extends Component {
             loading: false
         };
 
+        this.element = null;
+
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
         this.onSubjectChange = this.onSubjectChange.bind(this);
         this.onMessageChange = this.onMessageChange.bind(this);
         this.alertDismiss = this.alertDismiss.bind(this);
+    }
+
+    componentDidMount() {
+        gsap.from(this.element, {
+            autoAlpha: 0,
+            ease: "out",
+            duration: 1
+        });
     }
 
     resetForm() {
@@ -184,7 +195,7 @@ export default class ContactForm extends Component {
         const { loading } = this.state;
 
         return (
-            <div id='contact-form'>
+            <div id='contact-form' ref={div => (this.element = div)}>
                 <div id='alertwrapper'>
                     <Alert
                         color={this.state.success ? "primary" : "warning"}
