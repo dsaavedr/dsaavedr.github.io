@@ -26,8 +26,7 @@ export default class About extends Component {
         this.tween = gsap.from(this.element, {
             autoAlpha: 0,
             ease: "out",
-            duration: 1,
-            y: 100
+            duration: 1
         });
     }
 
