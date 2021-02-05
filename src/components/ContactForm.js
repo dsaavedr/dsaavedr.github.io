@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Alert } from "reactstrap";
 import { gsap } from "gsap";
+import * as EmailValidator from "email-validator";
 
 import Loading from "./Loading";
 
@@ -12,6 +13,7 @@ export default class ContactForm extends Component {
         this.state = {
             name: "",
             email: "",
+            emailValid: false,
             subject: "",
             message: "",
             success: true,
@@ -72,51 +74,65 @@ export default class ContactForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        const ev = EmailValidator.validate(this.state.email);
+
         this.setState({
-            loading: true
+            loading: true,
+            emailValid: ev
         });
 
-        // fetch("http://localhost:5000/send", {
-        fetch("https://glacial-mesa-80370.herokuapp.com/send", {
-            method: "POST",
-            body: JSON.stringify(this.state),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.status === "success") {
-                    this.resetForm();
-                    this.setState(
-                        {
-                            success: true,
-                            visible: true
-                        },
-                        this.showAlert
-                    );
-                } else if (res.status === "fail") {
-                    this.setState(
-                        {
-                            success: false,
-                            visible: true
-                        },
-                        this.showAlert
-                    );
+        if (ev) {
+            fetch("http://localhost:5000/send", {
+                // fetch("https://glacial-mesa-80370.herokuapp.com/send", {
+                method: "POST",
+                body: JSON.stringify(this.state),
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
                 }
-                this.setState({
-                    loading: false
-                });
             })
-            .catch(err => {
-                console.error(err);
-                this.setState({
+                .then(res => res.json())
+                .then(res => {
+                    if (res.status === "success") {
+                        this.resetForm();
+                        this.setState(
+                            {
+                                success: true,
+                                visible: true
+                            },
+                            this.showAlert
+                        );
+                    } else if (res.status === "fail") {
+                        this.setState(
+                            {
+                                success: false,
+                                visible: true
+                            },
+                            this.showAlert
+                        );
+                    }
+                    this.setState({
+                        loading: false
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    this.setState({
+                        success: false,
+                        visible: true,
+                        loading: false
+                    });
+                });
+        } else {
+            this.setState(
+                {
                     success: false,
                     visible: true,
                     loading: false
-                });
-            });
+                },
+                this.showAlert
+            );
+        }
     }
 
     alertDismiss() {
@@ -198,11 +214,13 @@ export default class ContactForm extends Component {
             <div id='contact-form' ref={div => (this.element = div)}>
                 <div id='alertwrapper'>
                     <Alert
-                        color={this.state.success ? "primary" : "warning"}
+                        color={this.state.success && this.state.emailValid ? "primary" : "warning"}
                         isOpen={this.state.visible}
                         toggle={this.alertDismiss}
                     >
-                        {this.state.success
+                        {!this.state.emailValid
+                            ? "Please provide a valid email address."
+                            : this.state.success
                             ? "Message sent!"
                             : "Message failed to send. Please contact me directly: danielsaavedram@hotmail.com"}
                     </Alert>
