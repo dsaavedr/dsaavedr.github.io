@@ -82,8 +82,8 @@ export default class ContactForm extends Component {
         });
 
         if (ev) {
-            fetch("http://localhost:5000/send", {
-                // fetch("https://glacial-mesa-80370.herokuapp.com/send", {
+            // fetch("http://localhost:5000/send", {
+            fetch("https://glacial-mesa-80370.herokuapp.com/send", {
                 method: "POST",
                 body: JSON.stringify(this.state),
                 headers: {
