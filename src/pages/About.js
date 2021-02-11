@@ -77,6 +77,7 @@ export default class About extends Component {
                                         <li>HTML &amp; CSS</li>
                                         <li>Javascript</li>
                                         <li>React</li>
+                                        <li>Redux</li>
                                         <li>Vue.js</li>
                                         <li>Bootstrap</li>
                                     </ul>
