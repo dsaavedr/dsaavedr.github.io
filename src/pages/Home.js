@@ -27,7 +27,26 @@ export default function Home() {
         }
     };
 
+    const checkIframeLoaded = () => {
+        try {
+            const iframe = document.getElementById("shy-particles");
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Check if loaded
+            if (iframeDoc.readyState === "complete") {
+                iframe.classList.remove("o-0");
+                return;
+            }
+
+            setTimeout(checkIframeLoaded, 100);
+        } catch (err) {
+            console.error(err);
+            setTimeout(checkIframeLoaded, 100);
+        }
+    };
+
     useEffect(() => {
+        checkIframeLoaded();
         revealRefs.current.forEach((i, idx) => {
             gsap.fromTo(
                 i,
@@ -53,6 +72,14 @@ export default function Home() {
     return (
         <>
             <Hero>
+                <iframe
+                    title='background-animation'
+                    src='https://dsaavedr.github.io/shy-particles/'
+                    styles='height: 100vh; width: 100vw'
+                    frameBorder='0'
+                    id='shy-particles'
+                    className='o-0'
+                ></iframe>
                 <Banner
                     title='Programming as a lifestyle'
                     subtitle='An ode to programming | portfolio'
