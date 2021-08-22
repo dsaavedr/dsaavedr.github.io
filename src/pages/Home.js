@@ -12,6 +12,7 @@ import Creators from "../components/Creators";
 import Loading from "../components/Loading";
 
 import { ProjectContext } from "../context";
+import Divider from "../components/Divider";
 
 export default function Home() {
     const { featured, loading } = useContext(ProjectContext);
@@ -88,6 +89,7 @@ export default function Home() {
                     <p className='bold'>Daniel Saavedra</p>
                 </Banner>
             </Hero>
+            <Divider />
             <div className='sections-wrapper'>
                 <MainSection title="What's the point of programming?" ref={addToRefs}>
                     <p>
