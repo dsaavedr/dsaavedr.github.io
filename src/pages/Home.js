@@ -79,7 +79,6 @@ export default function Home() {
                     styles='height: 100vh; width: 100vw'
                     frameBorder='0'
                     id='shy-particles'
-                    className='o-0'
                 ></iframe>
                 <Banner
                     title='Programming as a lifestyle'
