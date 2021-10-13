@@ -1,5 +1,4 @@
 .sections-wrapper
-    padding-top: 2em
     min-height: calc(100vh - #{$footerMinHeight})
 
 .main-section
@@ -14,8 +13,12 @@
 
     p
         text-align: justify
-    &:nth-child(2n)
-        background: $offWhite
+    &:first-of-type
+        padding-top: 7rem
+    &:nth-of-type(2n)
+        background: $mainOrange
+    &:nth-of-type(2n-1)
+        background: $primaryColor
 
         .card-container
             background: $mainWhite
